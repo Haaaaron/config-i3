@@ -181,14 +181,15 @@ bindsym $mod+r mode "resize"
 # always pop standard shell, without the menu
 bindsym $mod+b exec i3-quickterm shell
 
-#exec --no-startup-id "compton -b -C -f --config /home/main/.config/compton.conf"
+#set $image mountain.jpg
+set $image mandelbrot.png
+
 #status bar and wallpaper
-exec --no-startup-id feh --bg-center /home/main/Pictures/mandelbrot.png -B "#7f2704"
-exec --no-startup-id wal -n -i /home/main/Pictures/mandelbrot.png
-#exec --no-startup-id polybar example
+exec --no-startup-id /home/main/.config/i3/wallpaper.sh
 exec --no-startup-id "setxkbmap -layout us,fi -option 'grp:ctrl_alt_toggle'"
-#exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec --no-startup-id compton
 bar {
+    output HDMI-1
     status_command i3status
     colors {
         background $fg
@@ -200,9 +201,22 @@ bar {
         urgent_workspace   #ffffff #900000
     }
 }
+
+bar {
+    output DP-2
+    colors {
+        background $fg
+        statusline $bg
+
+        focused_workspace  $fg     $fg     $bg  $fg       $fg
+        active_workspace   $bg     $bg     $fg  $bg       $bg
+        inactive_workspace $bg     $bg     $fg  $bg       $bg
+        urgent_workspace   #ffffff #900000
+    }
+}
 #bindsym $mod+b exec --no-startup-id /home/main/Software/JetBrains/clion-2020.3.2/bin/clion.sh
-set_from_resource $fg i3wm.color2 #7f2704
-set_from_resource $bg i3wm.color0 #F2F2F2
+set_from_resource $bg i3wm.color2 ##7f2704
+set_from_resource $fg i3wm.color0 ##F2F2F2
 
 
 client.focused          $fg     $fg     $bg  $fg       $fg
@@ -214,10 +228,12 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
 
-# #gaps
-# for_window [class=".*"] border pixel 3
-# gaps outer 10
-# gaps inner 5
-# smart_gaps on
+#gaps
+for_window [class=".*"] border pixel 3
+gaps outer 10
+gaps inner 5
+smart_gaps on
 
 bindsym $mod+p exec --no-startup-id bash /home/main/.config/i3/passmenu.sh
+
+bindsym $mod+Shift+w exec --no-startup-id /home/main/.config/i3/wallpaper.sh

@@ -232,5 +232,5 @@ for_window [class=".*"] border pixel 3
 #smart_gaps on
 
 bindsym $mod+p exec --no-startup-id bash /home/$USER/.config/i3/passmenu.sh
-
 bindsym $mod+Shift+w exec --no-startup-id /home/$USER/.config/i3/wallpaper.sh
+bindsym $mod+Shift+d exec --no-startup-id /home/$USER/.config/i3/display.sh
